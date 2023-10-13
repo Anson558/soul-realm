@@ -39,9 +39,9 @@ class Enemy(Character):
         self.die_sound.play()
         super().die()
 
-class FollowingEnemy(Enemy):
+class Monster(Enemy):
     def __init__(self, main, pos : pygame.math.Vector2):
-        super().__init__(main, pos, pygame.math.Vector2(12, 15), load_cut_image('enemies/following_enemy.png'))
+        super().__init__(main, pos, pygame.math.Vector2(8, 15), load_cut_image('enemies/monster.png'))
         self.type = 'enemy'
         self.anim = Animation(self.images, 15)
         self.speed = 1
@@ -53,12 +53,12 @@ class FollowingEnemy(Enemy):
         self.follow()
         self.animate()
 
-class TankEnemy(Enemy):
+class Slime(Enemy):
     def __init__(self, main, pos : pygame.math.Vector2):
-        super().__init__(main, pos, pygame.math.Vector2(25, 22), load_cut_image('enemies/tank_enemy.png', 32))
+        super().__init__(main, pos, pygame.math.Vector2(28, 26), load_cut_image('enemies/slime.png', 32))
         self.type = 'enemy'
         self.anim = Animation(self.images, 25)
-        self.speed = 0.25
+        self.speed = 0.35
         self.health = 10
         self.damage = 1
 
@@ -67,9 +67,9 @@ class TankEnemy(Enemy):
         self.follow()
         self.animate()
 
-class ShootingEnemy(Enemy):
+class Register(Enemy):
     def __init__(self, main, pos : pygame.math.Vector2):
-        super().__init__(main, pos, pygame.math.Vector2(12, 15), load_cut_image('enemies/shooting_enemy.png'))
+        super().__init__(main, pos, pygame.math.Vector2(11, 14), load_cut_image('enemies/register.png'))
         self.type = 'enemy'
         self.anim = Animation(self.images, 15)
         self.speed = 0.5
@@ -90,11 +90,11 @@ class ShootingEnemy(Enemy):
         self.shoot(ShootingBullet)
         self.animate()
 
-class SnipingEnemy(Enemy):
+class Robot(Enemy):
     def __init__(self, main, pos : pygame.math.Vector2):
-        super().__init__(main, pos, pygame.math.Vector2(12, 15), load_cut_image('enemies/sniping_enemy.png'))
+        super().__init__(main, pos, pygame.math.Vector2(14, 15), load_cut_image('enemies/robot.png'))
         self.type = 'enemy'
-        self.anim = Animation(self.images, 15)
+        self.anim = Animation(self.images, 20)
         self.speed = 0.5
         self.health = 4
         self.damage = 1
@@ -113,11 +113,11 @@ class SnipingEnemy(Enemy):
         self.shoot(SnipingBullet)
         self.animate()
 
-class FastEnemy(Enemy):
+class Bot(Enemy):
     def __init__(self, main, pos : pygame.math.Vector2):
-        super().__init__(main, pos, pygame.math.Vector2(8, 8), load_cut_image('enemies/fast_enemy.png'))
+        super().__init__(main, pos, pygame.math.Vector2(8, 13), load_cut_image('enemies/bot.png'))
         self.type = 'enemy'
-        self.anim = Animation(self.images, 15)
+        self.anim = Animation(self.images, 30)
         self.speed = 2
         self.health = 2
         self.damage = 1

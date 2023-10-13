@@ -8,13 +8,13 @@ class EnemySpawner():
         self.main = main
         self.most_spawn_rate = 150
         self.spawn_rate = self.most_spawn_rate
-        self.least_spawn_rate = 50
+        self.least_spawn_rate = 45
         self.time_since_spawn = 0
 
     def update(self):
         self.time_since_spawn += 1
         if self.spawn_rate > self.least_spawn_rate:
-                self.spawn_rate -= 0.015
+                self.spawn_rate -= 0.02
         print(self.spawn_rate)
 
         if self.time_since_spawn > self.spawn_rate:
@@ -41,23 +41,20 @@ class SpawnPoint():
         if self.time_alive > self.spawn_time:
             self.main.entities.append(
                 random.choice([
-                    FollowingEnemy, 
-                    FollowingEnemy, 
-                    FollowingEnemy,
-                    FollowingEnemy,
-                    TankEnemy, 
-                    TankEnemy, 
-                    TankEnemy,
-                    ShootingEnemy,
-                    ShootingEnemy, 
-                    ShootingEnemy, 
-                    ShootingEnemy,
-                    ShootingEnemy,
-                    SnipingEnemy,
-                    SnipingEnemy, 
-                    FastEnemy, 
-                    FastEnemy, 
-                    FastEnemy,
+                    Monster, 
+                    Monster, 
+                    Monster,
+                    Monster,
+                    Slime, 
+                    Slime, 
+                    Slime,
+                    Register,
+                    Register, 
+                    Register, 
+                    Register,
+                    Robot, 
+                    Bot, 
+                    Bot,
                     ]
                 )(self.main, pygame.math.Vector2(self.rect.x, self.rect.y)))
             self.main.spawn_points.remove(self)

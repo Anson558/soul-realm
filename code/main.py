@@ -159,9 +159,12 @@ class Main():
             self.apply_scroll(pygame.math.Vector2(450, 285))
 
             if keys[pygame.K_RETURN]:
-                self.start_sound.play()
-                self.timer = 0
-                self.state = 'game'
+                self.start_game()
+
+    def start_game(self):
+        self.start_sound.play()
+        self.timer = 0
+        self.state = 'game'
 
     def set_menu(self):
         self.start_sound.play()
@@ -186,8 +189,8 @@ class Main():
                 entity.draw(display)
 
         if self.state == 'menu':
-            display.blit(pygame.transform.scale(self.logo, (self.logo.get_width() * 3, self.logo.get_height() * 3)), (self.game.display_size.x/2 - (self.logo.get_width() * 3)/2, 75))
-            display.blit(self.menu_text, (self.game.display_size.x/2 - self.menu_text.get_width()/2, 180))
+            display.blit(pygame.transform.scale(self.logo, (self.logo.get_width() * 3, self.logo.get_height() * 3)), (self.game.display_size.x/2 - (self.logo.get_width() * 3)/2, 105))
+            display.blit(self.menu_text, (self.game.display_size.x/2 - self.menu_text.get_width()/2, 160))
 
     def create_groups(self, layouts):
         for layout in layouts:
@@ -209,7 +212,7 @@ class Main():
 class Game():
     def __init__(self):
         self.display_size = pygame.math.Vector2(500, 300)
-        self.display_multiplier = 2.3
+        self.display_multiplier = 2.8
         self.screen_size = self.display_size * self.display_multiplier
         self.screen = pygame.display.set_mode(self.screen_size, vsync = True)
         self.display = pygame.Surface(self.display_size)
@@ -230,8 +233,7 @@ class Game():
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
-                        pygame.quit()
-                        sys.exit()
+                        self.main.set_menu()
 
             self.main.update()
             self.main.draw(self.display)
